@@ -1,3 +1,20 @@
+# custom list
+private.py
+google-credentials/
+.DS_Store
+*.NEF
+*.XMP
+test-images/
+documentation.webloc
+dev/
+gvis.json
+.filepath.txt
+_labels.csv
+_export-metadata.csv
+_export-metadata-r.csv
+csv-reconcile_mcid/*.csv
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
