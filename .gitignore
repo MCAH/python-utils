@@ -1,5 +1,7 @@
 # custom list
 private.py
+private_paths.py
+private_people.py
 google-credentials/
 .DS_Store
 *.NEF
@@ -9,6 +11,8 @@ documentation.webloc
 dev/
 gvis.json
 .filepath.txt
+.collection.txt
+.trip.txt
 _labels.csv
 _export-metadata.csv
 _export-metadata-r.csv
