@@ -23,11 +23,11 @@ if args.last:
 	filepath = save.read()
 	save.close()
 else:
-	filepath = filedialog.askdirectory(initialdir = private_paths.fp_lantern)
+	filepath = filedialog.askdirectory(initialdir = private_paths.fp_ls)
 	save = open('.filepath.txt', 'w+')
 	save.write(filepath)
 	save.close()
-# filepath = filedialog.askdirectory(initialdir = private_paths.fp_lantern)
+# filepath = filedialog.askdirectory(initialdir = private_paths.fp_ls)
 root.update()
 
 # prints working directory filepath or just folder name
