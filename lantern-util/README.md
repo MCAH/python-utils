@@ -28,3 +28,6 @@ generates CSV for inital upload to MCID - includes pathing and subjects but not 
 
 #### `label-csv-mcid-cat-ls.py`
 generates CSV for uploading additional cataloging to MCID - does not include subjects
+
+#### `append.py`
+combines tab upload spreadsheets into one long one based on google sheet
