@@ -17,6 +17,8 @@ _labels.csv
 _export-metadata.csv
 _export-metadata-r.csv
 csv-reconcile_mcid/*.csv
+workflow.md
+test.py
 
 
 # Byte-compiled / optimized / DLL files

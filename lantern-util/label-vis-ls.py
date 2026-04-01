@@ -17,7 +17,7 @@ import re
 import argparse
 import cv2
 
-# current version as of 31 mar 2026
+# current version as of 1 april 2026
 
 # set path to google credentials json for access
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = private_paths.gcred + 'gvis.json'
@@ -56,7 +56,7 @@ ignore = ['COLUMBIA UNIVERSITY', 'DEPARTMENT OF FINE ARTS AND ARCHAEOLOGY']
 
 # creates csv to write & sets csv header
 with open(os.path.join(filepath, csvname), 'w', encoding='utf-8-sig') as csvfile:
-	writer = csv.DictWriter(csvfile, fieldnames = ls.ocr)
+	writer = csv.DictWriter(csvfile, fieldnames = ls.workingheader)
 	writer.writeheader()
 
 	# progress bar setup
