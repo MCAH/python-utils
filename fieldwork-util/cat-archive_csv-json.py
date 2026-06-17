@@ -59,7 +59,7 @@ def csv_to_hybrid_csv(input_csv_path, output_csv_path, multivalue_columns):
                             row[col] = []
 
                 # Convert the remaining row dictionary into a single-line JSON string
-                json_string = json.dumps(row)
+                json_string = json.dumps(row, ensure_ascii=False)
 
                 # Write the new CSV
                 csv_writer.writerow(
