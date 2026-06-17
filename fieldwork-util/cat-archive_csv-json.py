@@ -23,7 +23,7 @@ input_csv = filename
 output_csv = os.path.join(directory + "/json.csv")
 new_name = filename.removesuffix(".csv")  + "-json.csv"
 
-print(output_csv)
+print(filename)
 
 def csv_to_hybrid_csv(input_csv_path, output_csv_path, multivalue_columns):
     with open(input_csv_path, mode="r", encoding="utf-8") as infile:
