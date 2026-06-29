@@ -89,7 +89,6 @@ with IncrementalBar('Progress:', max=count, suffix='%(index)d / %(max)d - %(eta_
 					sub1 = read['Xmp.dc.description']['lang="x-default"']
 
 					sub1raw = titlecase(sub1.upper(), callback=ls.exceptions)
-					print(sub1raw)
 					sub1 = sub1raw.strip(';, \t\n\r')
 					
 					# check if subheading exists
