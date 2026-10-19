@@ -19,7 +19,7 @@ import json
 import re
 from datetime import *
 
-# current version as of 1 april 2026
+# current version as of 19 october 2026
 
 # select working directory
 root = tk.Tk()
@@ -147,6 +147,9 @@ with open(os.path.join(filepath, csvname), 'w', encoding='utf-8-sig') as csvfile
 					# checks for text in each field to add to csv, moves on if field is empty
 					try:
 						category = read['Xmp.photoshop.SupplementalCategories']
+						# pyexiv2 2.16+ returns a single subject as a string instead of a list
+						if isinstance(category, str):
+							category = category.split(', ')
 						subject1 = category[0].replace(',', ', ')
 						newrow.update({'s1 LS': subject1})
 
@@ -180,7 +183,7 @@ with open(os.path.join(filepath, csvname), 'w', encoding='utf-8-sig') as csvfile
 							newrow.update({'s7 LS': subject7})
 						except: pass
 
-					except KeyError: pass
+					except (KeyError, IndexError): pass
 
 					try:
 						subhead = read['Xmp.photoshop.Category']

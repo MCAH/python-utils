@@ -8,45 +8,26 @@ import io
 import os
 import pyexiv2
 import glob
-import tkinter as tk
-from tkinter import filedialog
 import pathlib
 from progress.bar import IncrementalBar
 import csv
 import re
-import argparse
 import cv2
 
-# current version as of 1 april 2026
+# current version as of 19 october 2026
 
 # set path to google credentials json for access
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = private_paths.gcred + 'gvis.json'
 
-# select working directory
-root = tk.Tk()
-root.withdraw()
-parser = argparse.ArgumentParser()
-parser.add_argument('-last', '-l', action='store_true')
-args = parser.parse_args()
-if args.last:
-	save = open('.filepath.txt', 'r')
-	filepath = save.read()
-	save.close()
-else:
-	filepath = filedialog.askdirectory(initialdir = private_paths.fp_ls)
-	save = open('.filepath.txt', 'w+')
-	save.write(filepath)
-	save.close()
-# filepath = filedialog.askdirectory(initialdir = private_paths.fp_ls)
-root.update()
+ls.directory()
 
 # prints working directory filepath or just folder name
-foldername = os.path.basename(filepath)
+foldername = os.path.basename(ls.filepath)
 # print('Path: ' + filepath)
 print('Folder: ' + foldername)
 
 # counts files for progress bar
-count = len(glob.glob1(filepath, "*.NEF"))
+count = len(glob.glob1(ls.filepath, "*.NEF"))
 
 # names csv after current folder
 csvname = os.path.join(foldername + '_labels.csv')
@@ -55,7 +36,7 @@ csvname = os.path.join(foldername + '_labels.csv')
 ignore = ['COLUMBIA UNIVERSITY', 'DEPARTMENT OF FINE ARTS AND ARCHAEOLOGY']
 
 # creates csv to write & sets csv header
-with open(os.path.join(filepath, csvname), 'w', encoding='utf-8-sig') as csvfile:
+with open(os.path.join(ls.filepath, csvname), 'w', encoding='utf-8-sig') as csvfile:
 	writer = csv.DictWriter(csvfile, fieldnames = ls.workingheader)
 	writer.writeheader()
 
@@ -64,7 +45,7 @@ with open(os.path.join(filepath, csvname), 'w', encoding='utf-8-sig') as csvfile
 		for c in range(1):
 
 			# isolates NEF filename and path for use with other file types
-			for rawimg in sorted(glob.glob(os.path.join(filepath, '*.NEF'))):
+			for rawimg in sorted(glob.glob(os.path.join(ls.filepath, '*.NEF'))):
 				directory, rawfilename = os.path.split(rawimg)
 				name, ext = os.path.splitext(rawfilename)
 

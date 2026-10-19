@@ -11,7 +11,7 @@ import csv
 from csv import DictReader
 import argparse
 
-# current version as of 1 april 2026
+# current version as of 19 october 2026
 
 # select working directory
 root = tk.Tk()
@@ -111,8 +111,11 @@ with open(os.path.join(filepath, csvname), 'r', encoding='utf-8-sig') as csvfile
 														', ', ',')
 													subjects = subject1 + ', ' + subject2 + ', ' + subject3 + ', ' + subject4 + ', ' + subject5 + ', ' + subject6 + ', ' + subject7
 
+						# splits subjects into a list (pyexiv2 2.16+ no longer splits strings on ', ')
+						subjects = subjects.split(', ')
+
 						# defines fields to add to metadata and clear old caption
-						metadata = { 'Xmp.dc.description': row['transcription'], 'Xmp.photoshop.Headline': row['title'], 'Xmp.photoshop.City': row['location'], 'Xmp.photoshop.CaptionWriter': row['verso'], 'Xmp.photoshop.SupplementalCategories': subjects, 'Xmp.photoshop.Instructions': row['manufacturer'], 'Xmp.photoshop.Source': row['source'], 'Xmp.photoshop.Category': row['subheading']}
+						metadata = { 'Xmp.dc.description': row['OCR'], 'Xmp.photoshop.Headline': row['title'], 'Xmp.photoshop.City': row['location'], 'Xmp.photoshop.CaptionWriter': row['verso'], 'Xmp.photoshop.SupplementalCategories': subjects, 'Xmp.photoshop.Instructions': row['manufacturer'], 'Xmp.photoshop.Source': row['source'], 'Xmp.photoshop.Category': row['subheading']}
 
 						# writes metadata
 						img.modify_xmp(metadata)
